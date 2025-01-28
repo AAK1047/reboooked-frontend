@@ -36,6 +36,22 @@ export const approvebooksapi= async (id)=>{
     return await commonApi('PUT',`${serverUrl}/approve-book/${id}`)
 }
 
+//remove books
+export const removebooksapi= async (id)=>{
+    return await commonApi('DELETE',`${serverUrl}/remove-book/${id}`)
+}
+
+
+//reject books
+export const rejectbooksapi= async (id)=>{
+    return await commonApi('PUT',`${serverUrl}/reject-book/${id}`)
+}
+
+//get-sell-order
+export const sellorderapi= async (reqheader)=>{
+    return await commonApi('GET',`${serverUrl}/get-sell-order`,{},reqheader)
+}
+
 //admin-all-books
 export const adminallbooksapi= async ()=>{
     return await commonApi('GET',`${serverUrl}/admin-all-books`)

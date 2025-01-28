@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { serverUrl } from "../../services/serverURL";
-import { approvebooksapi } from "../../services/allapi";
+import { approvebooksapi, rejectbooksapi } from "../../services/allapi";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
@@ -39,6 +39,28 @@ const AdminBookCard = ({ book , getallbooks}) => {
     }
   }
 
+  const onReject=async(id)=>{
+    const result = await rejectbooksapi(id)
+    if(result.status==200){
+      MySwal.fire({
+        title: 'Done!',
+        text: 'Hence Rejected',
+        icon: 'warning',
+        
+      })
+      getallbooks()
+    }
+    else{
+      MySwal.fire({
+        title: 'oops!',
+        text:'something went wrong',
+        icon: 'error',
+        
+      })
+      
+    }
+  }
+
   return (
     <div>
       <div className="max-w-sm bg-white border rounded-lg shadow-md overflow-hidden">
@@ -62,7 +84,7 @@ const AdminBookCard = ({ book , getallbooks}) => {
             Approve
           </button>
           <button
-            onClick={() => onReject(book>_id)}
+            onClick={() => onReject(book._id)}
             className="bg-red-500 text-white py-1 px-4 rounded hover:bg-red-600"
           >
             Reject

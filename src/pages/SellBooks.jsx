@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import Header from "../components/Header";
 import Footer from "../components/Footer"
+import { useNavigate } from "react-router-dom";
 
 const MySwal = withReactContent(Swal);
 
@@ -22,6 +23,7 @@ const SellBook = () => {
     secnumber:""
   });
   const [token , settoken]=useState("")
+  const navigate = useNavigate()
  
   
   const onsubmit =async ()=>{
@@ -79,6 +81,8 @@ const SellBook = () => {
               frontCover: "",
               backCover: "",
             })
+            navigate('/account/selling-orders')
+            
            }
            else{
             MySwal.fire({

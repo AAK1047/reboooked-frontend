@@ -107,12 +107,10 @@ const BookCart = ({ book ,setdelstatus}) => {
               />
             </div>
             <div className="flex justify-between mt-6">
-              <button
-                onClick={() => onAddToCart(book)}
-                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-              >
-                Add to Cart
-              </button>
+            <button
+            onClick={() => onremoveCart(book._id)}
+            className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600"
+          >  <FontAwesomeIcon icon={faTrash} /> </button>
               <button
                 onClick={() => onBuyNow(book)}
                 className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
