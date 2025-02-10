@@ -3,6 +3,7 @@ import { serverUrl } from "../../services/serverURL";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { removecartapi } from "../../services/allapi";
+import { useNavigate } from "react-router-dom";
 
 const BookCart = ({ book ,setdelstatus}) => {
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
@@ -14,7 +15,11 @@ const BookCart = ({ book ,setdelstatus}) => {
 
   const openImageInFullView = (imageUrl) => setFullViewImage(imageUrl);
   const closeFullViewImage = () => setFullViewImage("");
+ const navigate = useNavigate();
 
+  const handleBuyNow = () => {
+    navigate("/buy", { state: { book } });
+  };
   const onremoveCart = async (id)=>{
 
     if(token){
@@ -69,12 +74,12 @@ const BookCart = ({ book ,setdelstatus}) => {
             onClick={() => onremoveCart(book._id)}
             className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600"
           >  <FontAwesomeIcon icon={faTrash} /> </button>
-          <button
-            onClick={() => onBuyNow(book)}
-            className="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-600"
-          >
-            Buy
-          </button>
+<button
+      onClick={handleBuyNow}
+      className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+    >
+      Buy
+    </button>
         </div>
       </div>
 
@@ -112,11 +117,11 @@ const BookCart = ({ book ,setdelstatus}) => {
             className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600"
           >  <FontAwesomeIcon icon={faTrash} /> </button>
               <button
-                onClick={() => onBuyNow(book)}
-                className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-              >
-                Buy
-              </button>
+      onClick={handleBuyNow}
+      className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+    >
+      Buy
+    </button>
             </div>
           </div>
         </div>

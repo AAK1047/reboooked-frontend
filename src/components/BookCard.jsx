@@ -3,6 +3,7 @@ import { serverUrl } from "../../services/serverURL";
 import { addtocartapi } from "../../services/allapi";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { Link, useNavigate } from "react-router-dom";
 
 const MySwal = withReactContent(Swal);
 
@@ -17,6 +18,12 @@ const BookCard = ({ book }) => {
 
   const openImageInFullView = (imageUrl) => setFullViewImage(imageUrl);
   const closeFullViewImage = () => setFullViewImage("");
+
+  const navigate = useNavigate();
+
+  const handleBuyNow = () => {
+    navigate("/buy", { state: { book } });
+  };
 
   const onAddToCart = async (id) => {
     if (token) {
@@ -67,11 +74,11 @@ const BookCard = ({ book }) => {
             Add to Cart {successMessage && <p className="text-green-500 text-sm mt-2">{successMessage}</p>}
           </button>
           <button
-            onClick={() => onBuyNow(book)}
-            className="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-600"
-          >
-            Buy
-          </button>
+      onClick={handleBuyNow}
+      className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+    >
+      Buy
+    </button>
         </div>
       </div>
 
@@ -111,11 +118,11 @@ const BookCard = ({ book }) => {
                 Add to Cart {successMessage && <p className="text-green-500 text-sm mt-2">{successMessage}</p>}
               </button>
               <button
-                onClick={() => onBuyNow(book)}
-                className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-              >
-                Buy
-              </button>
+      onClick={handleBuyNow}
+      className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+    >
+      Buy
+    </button>
             </div>
           </div>
         </div>

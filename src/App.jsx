@@ -16,6 +16,7 @@ import Account from "./pages/Account"
 import Profile from "./components/Profile"
 import MyOrders from "./components/MyOrders"
 import SellingOrders from "./components/SellingOrders"
+import BuyPage from "./pages/BuyPage.jsx"
 
 
 function App() {
@@ -40,7 +41,9 @@ function App() {
     <Route path="profile" element={<Profile />} />
     <Route path="orders" element={<MyOrders />} />
     <Route path="selling-orders" element={<SellingOrders />} />
+
   </Route>
+    <Route path="buy" element={<BuyPage />} />
 
 
     </Routes>

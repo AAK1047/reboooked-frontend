@@ -36,12 +36,20 @@ export const approvebooksapi= async (id)=>{
     return await commonApi('PUT',`${serverUrl}/approve-book/${id}`)
 }
 
+//order books
+export const orderbooksapi= async (id,reqheader)=>{
+    return await commonApi('PUT',`${serverUrl}/order-book/${id}`,{},reqheader)
+}
+
 //remove books
 export const removebooksapi= async (id)=>{
     return await commonApi('DELETE',`${serverUrl}/remove-book/${id}`)
 }
 
-
+//edit profile
+export const editprofileapi= async (reqbody , reqheader)=>{
+    return await commonApi('PUT',`${serverUrl}/editprofile`,reqbody,reqheader)
+}
 //reject books
 export const rejectbooksapi= async (id)=>{
     return await commonApi('PUT',`${serverUrl}/reject-book/${id}`)
@@ -51,6 +59,13 @@ export const rejectbooksapi= async (id)=>{
 export const sellorderapi= async (reqheader)=>{
     return await commonApi('GET',`${serverUrl}/get-sell-order`,{},reqheader)
 }
+
+//get-ordered books
+export const orderedbooksapi= async (reqheader)=>{
+    return await commonApi('GET',`${serverUrl}/ordered-books`,{},reqheader)
+}
+
+
 
 //admin-all-books
 export const adminallbooksapi= async ()=>{
@@ -76,6 +91,8 @@ export const textbooksapi= async (searchkey)=>{
 export const addtocartapi= async (id,reqheader)=>{
     return await commonApi('POST',`${serverUrl}/add-cart/${id}`,{},reqheader)
 }
+
+
 
 //get cart
 export const getcartapi= async (reqheader)=>{
